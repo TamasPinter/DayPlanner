@@ -2,6 +2,17 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
+    let timeNow = dayjs().format('ddd MMM-D-YYY H:m');
+    $("#currentDay").text(timeNow);
+
+$(".saveBtn").on('click', function() {
+    let timeBox = $(this).parent().attr('id');
+    let inputText = $(this).siblings('.description').val();
+    localStorage.setItem(timeBox, inputText);
+    console.log(localStorage);
+    return;
+});
+ 
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
