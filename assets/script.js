@@ -5,6 +5,7 @@ $(function () {
     let timeNow = dayjs().format('ddd MMM-D-YYY H:m');
     $("#currentDay").text(timeNow);
 
+    // using the save button, info tracked through hour div and text input div, logged to localstorage
 $(".saveBtn").on('click', function() {
     let timeBox = $(this).parent().attr('id');
     let inputText = $(this).siblings('.description').val();
@@ -13,6 +14,19 @@ $(".saveBtn").on('click', function() {
     return;
 });
  
+//check if entered event is in past/present/future and assign variable colours
+const thisHour = dayjs().format('H');
+$('.time-block').each(function () {
+    let divId = $(this).attr('id'); // divId tied to entered hour id
+    if (divId < currentHour) { 
+        const element = document.getElementById('id') //check to make sure current iD is before
+        $(this).element.classList.add('.past'); //assign current frame past
+    } else if (divId > currentHour) {  //entered id greater than current time
+        $(this).addClass('#future'); //assign class future
+    } else if (divId === currentHour) { //if Id is current hour
+        $(this).addClass('#present');
+    }
+});
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
