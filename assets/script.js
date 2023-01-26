@@ -2,7 +2,7 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
-    let timeNow = dayjs().format('MM-DD-YYYY');
+    let timeNow = dayjs().format('MM-DD-YYYY HH:m a');
     $("#currentDay").text(timeNow);
 
     // using the save button, info tracked through hour div and text input div, logged to localstorage
@@ -15,20 +15,21 @@ $(".saveBtn").on('click', function() {
 });
  
 //check to display timeblocks in correct colour on calendar tabs based on current time
-const thisHour = dayjs().format('H');
+ let currentTime = parseInt(dayjs().format('HH'));
+ console.log(currentTime);
 $(".time-block").each(function () {
-    let divId = $(this).attr('id'); 
-    if (divId < thisHour) {  
+    let divId = parseInt($(this).attr('id')); 
+    if(divId < currentTime) {  
         $(this).addClass('past'); 
-    } else if (divId > thisHour) {  
-        $(this).addClass('future'); 
-    } else if (divId === thisHour) { 
+    } else if (divId > currentTime) {  
+        $(this).addClass('future');
+    } else if (divId === currentTime) { 
         $(this).addClass('present');
     }
 });
 
 //grab local storage info
-
+$('#8 .description').val(localStorage.getItem('8'));
 $('#9 .description').val(localStorage.getItem('9'));
 $('#10 .description').val(localStorage.getItem('10'));
 $('#11 .description').val(localStorage.getItem('11'));

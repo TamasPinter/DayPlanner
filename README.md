@@ -26,7 +26,7 @@ The user may click on any listed time, enter text in the time slot, and then cli
 To delete any entries, simply highlight your text, erase it and save the field as blank.
 
     
-    ![alt text](assets/images/screenshot.png)
+    ![screenshot](./assets/screenshot.png)
     
 
 ## Credits
